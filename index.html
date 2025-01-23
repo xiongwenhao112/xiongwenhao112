@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>豆包MarsCode 花样贪吃蛇</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* 设置背景颜色 */
+        }
+        #canvas {
+            border: 2px solid #333; /* 增加边框宽度和颜色 */
+            border-radius: 10px; /* 添加圆角效果 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+            width: 600px; /* 增大画布宽度 */
+            height: 600px; /* 增大画布高度 */
+            transition: all 0.3s ease; /* 添加过渡效果 */
+        }
+        #canvas:hover {
+            transform: scale(1.05); /* 鼠标悬停时放大画布 */
+        }
+        #score {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            transition: all 0.3s ease; /* 添加过渡效果 */
+        }
+        #score:hover {
+            transform: scale(1.1); /* 鼠标悬停时放大得分 */
+        }
+        h1 {
+            text-align: center;
+            font-size: 48px; /* 增大字体大小 */
+            font-weight: bold;
+            margin-bottom: 20px; /* 增大底部间距 */
+            color: #FF0000; /* 设置字体颜色为红色 */
+            text-shadow: 2px 2px 4px #000000; /* 添加文字阴影效果 */
+            animation: bounce 1s infinite; /* 添加动画效果 */
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        #restart-button, #start-button {
+            display: none; /* 初始时隐藏按钮 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: #FF0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #mode-select {
+            display: none; /* 初始时隐藏模式选择 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        #mode-select label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #mode-select input[type="radio"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>豆包MarsCode 花样贪吃蛇</h1>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <div id="score">得分: 0</div>
+    <button id="start-button">开始游戏</button>
+    <div id="mode-select">
+        <label>
+            <input type="radio" name="mode" value="normal" checked> 普通模式
+        </label>
+        <label>
+            <input type="radio" name="mode" value="speed"> 极速模式
+        </label>
+        <button id="confirm-button">确认</button>
+    </div>
+    <button id="restart-button">重新开始</button>
+    <script src="game.js"></script>
+</body>
+</html>
